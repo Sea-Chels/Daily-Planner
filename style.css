@@ -1,0 +1,193 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1;
+}
+
+
+:root{
+  --main-color: rgb(26, 161, 240);
+  --light: rgb(203, 234, 255);
+}
+textarea {
+  background: transparent;
+  border: none;
+  resize: none;
+  color: #000000;
+  border-left: 1px solid black;
+  padding: 10px;
+}
+
+.jumbotron {
+  text-align: center;
+  background-color: var(--main-color);
+  color: white;
+  border-radius: 0;
+  border-bottom: 10px solid var(--light);
+  padding-bottom: 1%;
+}
+
+.description {
+  white-space: pre-wrap;
+}
+
+.time-block {
+  text-align: center;
+  border-radius: 15px;
+}
+
+.row {
+  white-space: pre-wrap;
+  height: 80px;
+  border-top: 1px solid white;
+}
+
+.hour {
+  background-color: #ffffff;
+  color: #000000;
+  border-top: 1px dashed #000000;
+}
+
+.past {
+  background-color: #d3d3d3;
+  color: white;
+}
+
+
+.future {
+  background-color: #77dd77;
+  color: white;
+}
+
+
+.present {
+  background-color: #ff6961;
+  color: white;
+}
+
+.saveBtn {
+  border-left: 1px solid black;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-color: var(--main-color);
+  color: white;
+}
+
+.saveBtn i:hover {
+  font-size: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.container{
+  display:grid; 
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  height: 90vh;
+}
+
+.day {
+  border-width:1px;
+  border-color:var(--light);
+  border-style: solid;
+  border-radius: 5px;
+  padding:10%;
+  color: var(--main-color);
+}
+
+.currentDay{
+  border-color: var(--main-color) !important; 
+  border-width: 2px !important;
+  background-color:rgb(255, 241, 161) !important;
+
+}
+/*------------------------------------------------------*/
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(15, 21, 78, 0.4); /* Black w/ opacity */
+}
+button {
+  background-color: white;
+  border-color: yellow;
+  padding:1%;
+  border-radius: 25px;
+  color: var(--main-color);
+}
+button:hover{
+  background-color: var(--light);
+  color: white;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  color: var(--main-color);
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  /* transform: translate(500px,0px) */
+  text-align: right;
+  padding-bottom:1%;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/*-----------------------------------------------------*/
+form, label{
+  padding-top:2%;
+  padding-bottom:2%;
+}
+
+select {
+  padding-left: 14px;
+  padding-right: 14px;
+}
+footer{
+  padding: 3%;
+  text-align: center;
+}
+footer a{
+  text-decoration: none;
+  color: var(--main-color);
+}
+::placeholder{
+  color: var(--light);
+}
+
+#choose{
+  color: var(--light)
+}
+
+.check-mark{
+  position:absolute;
+transform: translate(650px, -30px)
+}
+.hide{
+  display: none;
+}
+
+.show{
+  display:inherit;
+}
