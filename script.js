@@ -9,9 +9,20 @@ var dayContainer= '';
 var activityContainer = '';
 var totalDays = 31;
 var newActivity = '';
+var activityTime = document.getElementById('activity-time');
+var activityName = document.getElementById('activity');
+var saveBtn = document.getElementById('save-btn');
+var dayOfMonth = document.getElementById('activity-day') ;
+
+var timeValue = '';
+var activityValue = '';
+var dayValue = '';
+var storedActivityArray = [];
+var calendarDayContainer = document.getElementsByClassName('activity-container');
+var activityContainerArray = Array.from(calendarDayContainer);
 
 
-for (let i=0 ; i < totalDays; i++){
+for (var i=0 ; i < totalDays; i++){
   //makes sure the month has the correct number of days 
     if(moment().format('MMMM') === 'February'){
       totalDays = 28;
@@ -33,7 +44,10 @@ for (let i=0 ; i < totalDays; i++){
     activityContainer = document.createElement('div');
     activityContainer.classList.add('activity-container');
     dayContainer.classList.add('day');
-    dayContainer.innerHTML = `${day[i]}`;
+    if (moment().format('D') == (i + 1)){
+    dayContainer.innerHTML = `${day[i]} ${moment().format('ddd')}`;} else {
+      dayContainer.innerHTML = `${day[i]}`;
+    }
     dayContainer.appendChild(activityContainer);
     calendar.appendChild(dayContainer);
 //adds the current day css on the present day
@@ -42,7 +56,7 @@ for (let i=0 ; i < totalDays; i++){
       weekDay = document.createElement('p');
       weekDay.innerHTML = ``
       dayContainer.append(weekDay);
-      // dayContainer.innerHTML = `${i+1} ${moment().format('ddd')}`
+
     } 
 //adds past and future classes
     if(day[i] < moment().format('D')){
@@ -50,23 +64,29 @@ for (let i=0 ; i < totalDays; i++){
     } else if(day[i] > moment().format('D')){
       activityContainer.classList.add('future');
     }
+  };
+  var storedActivities = JSON.parse(localStorage.getItem('Stored-Activities'));
 
-}
-currentDay.innerHTML = 'Today is ' + today;
+  currentDay.innerHTML = 'Today is ' + today;
 
-var calendarDayContainer = document.getElementsByClassName('activity-container');
-var activityContainerArray = Array.from(calendarDayContainer);
+  var calendarDayContainer = document.getElementsByClassName('activity-container');
+  var activityContainerArray = Array.from(calendarDayContainer);
 
-console.log(activityContainerArray[1]);
+  console.log(storedActivities);
+
+  for (var i=0 ; i < totalDays; i++){
+    if (storedActivities !== undefined && storedActivities[i] !==undefined){
+        console.log(storedActivities[i].time)
+        console.log(storedActivities[i])
+         var localStoreAct = document.createElement('p')
+        localStoreAct.innerHTML = `${moment().hours(storedActivities[i].time).format('h a')} - ${storedActivities[i].activity}`;
+        activityContainerArray[parseInt(storedActivities[i].theDay)-1].appendChild(localStoreAct);
+      }};
+console.log(storedActivities[1].time)
+  // console.log(storedActivities !== undefined)
+// console.log(activityContainerArray);
+// console.log(storedActivities[0].time);
 //--Below is for getting the form input and put it into the divs---------
-var activityTime = document.getElementById('activity-time');
-var activityName = document.getElementById('activity');
-var saveBtn = document.getElementById('save-btn');
-var dayOfMonth = document.getElementById('activity-day') ;
-
-var timeValue = '';
-var activityValue = '';
-var dayValue = '';
 
 saveBtn.addEventListener('click', (e)=>{
     e.preventDefault();
@@ -74,50 +94,45 @@ saveBtn.addEventListener('click', (e)=>{
     timeValue = activityTime.value ;
     activityValue = activityName.value;
     dayValue = dayOfMonth.value;
-    console.log(`I have ${activityValue} at ${timeValue} on the ${dayValue} of this month.`);
     //below adds the activities to the container. 
     newActivity = document.createElement('p');
-    newActivity.innerHTML = `${timeValue} - ${activityValue}`;
+    newActivity.innerHTML = `${moment().hours(timeValue).format('h a')} - ${activityValue}`;
     activityContainerArray[parseInt(dayValue)-1].appendChild(newActivity);
+    //---------------------sets the classes on current day to show past present and future-------THIS WORKS NOW
     if (`${dayValue}` === moment().format('D')){
-      timeValue.split(' ');
-      // if (timeValue[1] === "pm" ){
-      //   if (moment().format('h') < timeValue[0] || moment().format('a') === 'am'){
-      //     newActivity.classList.add('past');
-      //     console.log('pm is working')
-      //   } else{
-      //       newActivity.classList.add('future');
-      //       console.log('pm else is working')
-      //     }
-      // };
-      // if (timeValue[1] === "am"){
-      //   if ((moment().format('h') > timeValue[0] || moment().format('a') === 'pm')){
-      //     newActivity.classList.add('future');
-      //     console.log('am if is working')
-      //   }else{
-      //       newActivity.classList.add('past');
-      //       console.log('am else is working')
-      //     }
-      // };
-      if (moment().format('h') < timeValue[0] && moment().format('a') < timeValue[1]){
+      
+      var momentNow = moment();
+      var userMoment = moment().hours(timeValue);
+      // is before
+      if(userMoment.isBefore(momentNow)){
+        console.log('in past');
+        newActivity.classList.add('past')
+      } 
+      // is after
+      else if (momentNow.isBefore(userMoment)) {
+        console.log('in future');
         newActivity.classList.add('future');
-      }else if( moment().format('h a') === timeValue) {
+      } 
+      // current hour
+      else {
+        console.log('current hour');
         newActivity.classList.add('present');
-      } else {
-        newActivity.classList.add('past');
       }
+      
      };
-// if ('am' < 'pm'){
-//   console.log('am is less than pm')
-// }else {
-//   console.log('pm is less than am ')
-// }
+  //--------setting local storage ----------------------
+    storedActivityArray.push({
+      'time': timeValue, 
+      'theDay': dayValue,
+      'activity': activityValue
+      });
+    localStorage.setItem(`Stored-Activities`, JSON.stringify(storedActivityArray));
+
+    //gets rid of the modal so the user knows their information was stored----
+    modal.style.display = "none";
 });
 
-console.log(moment().format('D'))
-
-
-//-------copied from w3 schools-------------------------
+//-------copied from w3schools-------------------------
 // Get the modal
 var modal = document.getElementById("myModal");
 // Get the button that opens the modal
@@ -138,4 +153,17 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-//--------------------------------------------------------------------------------------
+//-------------------------------------------------------------------
+// Trying and unsucessfully Retrieving local storage on page load-------------------
+// var storedActivities = JSON.parse(localStorage.getItem('Stored-Activities'));
+
+// console.log(storedActivities);
+// function init(){
+//   for (var i=1 ; i < storedActivities.length; i++){
+//     console.log(storedActivities[i].theDay);
+//     console.log(storedActivities[i].activity, moment().hours(storedActivities[i].time).format('h a'));
+
+//  
+// 
+
+// init();
