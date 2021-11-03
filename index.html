@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -28,97 +31,99 @@
       <p class="lead">A simple calendar app for scheduling your work day</p>
       <p id="currentDay" class="lead"></p>
         <!-- Trigger/Open The Modal -->
-    <button id="myBtn">Add Activities</button>
-    <!-- The Modal -->
+    <button id="myBtn">Clear All Activities</button>
+    <!-- The Modal-->
     <div id="myModal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
         <span class="close">&times;</span>
           <form id="form">
-              <div>
-                <label for="day-of-month">Which day of the month? : </label>
-                <select id="activity-day" name="times">
-                  <option id ="choose" value="choose">Choose an Option</option>
-                  <option value="1">1st</option>
-                  <option value="2">2nd</option>
-                  <option value="3">3rd</option>
-                  <option value="4">4th</option>
-                  <option value="5">5th</option>
-                  <option value="6">6th</option>
-                  <option value="7">7th</option>
-                  <option value="8">8th</option>
-                  <option value="9">9th</option>
-                  <option value="10">10th</option>
-                  <option value="11">11th</option>
-                  <option value="12">12th</option>
-                  <option value="13">13th</option>
-                  <option value="14">14th</option>
-                  <option value="15">15th</option>
-                  <option value="16">16th</option>
-                  <option value="17">17th</option>
-                  <option value="18">18th</option>
-                  <option value="19">19th</option>
-                  <option value="20">20th</option>
-                  <option value="21">21st</option>
-                  <option value="22">22nd</option>
-                  <option value="23">23rd</option>
-                  <option value="24">24th</option>
-                  <option value="25">25th</option>
-                  <option value="26">26th</option>
-                  <option value="27">27th</option>
-                  <option value="28">28th</option>
-                  <option value="29">29th</option>
-                  <option value="30">30th</option>
-                  <option value="31">31st</option>
-                </select>
-              </div>
               <div id="form-div">
-                <label for="activity-time">Activity Time : </label>
-                <select id="activity-time" name="times">
-                  <option id ="choose" value="choose">Choose an Option</option>
-                  <option value="6">6:00 am </option>
-                  <option value="7">7:00 am</option>
-                  <option value="8">8:00 am</option>
-                  <option value="9">9:00 am</option>
-                  <option value="10">10:00 am</option>
-                  <option value="11">11:00 am</option>
-                  <option value="12">12:00 pm</option>
-                  <option value="13">1:00 pm</option>
-                  <option value="14">2:00 pm</option>
-                  <option value="15">3:00 pm</option>
-                  <option value="16">4:00 pm</option>
-                  <option value="17">5:00 pm</option>
-                  <option value="18">6:00 pm</option>
-                  <option value="19">7:00 pm</option>
-                  <option value="20">8:00 pm</option>
-                  <option value="21">9:00 pm</option>
-                  <option value="22">10:00 pm</option>
-                </select>
-              </div>
               <div>
-                <label>Ac tivity Title :</label>
+                <label>Activity Name :</label>
                 <input type="text" placeholder="i.e. Work" id="activity">
                 <ul id="entered-activities"> 
-                    <!-- <li class="activity">Example activity 1</li>
-                    <li class="activity">Example activity 2</li>
-                    <li class="activity">Example activity 3</li> -->
                 </ul> 
                 <button id= "save-btn"type="submit">Save My Activities!</button>
-                <!-- <p class="check-mark hide show">
-                  ✅ </p> -->
               </div>
-              
         </form>
       </div>
     </header>
 
-<div>
-    <div class="container" id='calendar'>
-      <!-- Timeblocks go here -->
-
-</div>
-</div>
-</div>
+    <div id="section-container">
+        <section class = 'section' id="9-am" value ="9">
+            <h2>9 AM</h2>
+            <div class="activity-block" id = "9" value ="9">
+            </div>
+            <!-- <div class="span-tip"> <h1>X</h1>
+                <div class="tip"> Clear all activities in this hour</div>
+            </div> -->
+        </section>
+        <section class = 'section' id="10-am" value="10">
+            <h2>10 AM</h2>
+            <div class="activity-block" id = "10" value="10">
+            </div>
+            <!-- <div class="span-tip"> <h1>X</h1>
+                <div class="tip"> Clear all activities in this hour</div>
+            </div> -->
+        </section>
+        <section class = 'section' id="11-am" value="11">
+            <h2>11 AM</h2>
+            <div class="activity-block" id = "11" value="11">
+            </div>
+            <!-- <div class="span-tip"> <h1>X</h1>
+                <div class="tip"> Clear all activities in this hour</div>
+            </div> -->
+        </section>
+        <section class = 'section' id="12-pm" value="12">
+            <h2>12 PM</h2>
+            <div class="activity-block" id = "12" value="12">
+            </div>
+            <!-- <div class="span-tip"> <h1>X</h1>
+                <div class="tip"> Clear all activities in this hour</div>
+            </div> -->
+        </section>
+        <section class = 'section' id="1-pm" value = "13">
+            <h2>1 PM</h2>
+            <div class="activity-block" id = "13" value = "13">
+            </div>
+            <!-- <div class="span-tip"> <h1>X</h1>
+                <div class="tip"> Clear all activities in this hour</div>
+            </div> -->
+        </section>
+        <section class = 'section' id="2-pm" value= "14">
+            <h2>2 PM</h2>
+            <div class="activity-block" id = "14" value= "14">
+            </div>
+            <!-- <div class="span-tip"> <h1>X</h1>
+                <div class="tip"> Clear all activities in this hour</div>
+            </div> -->
+        </section>
+        <section class = 'section' id="3-pm" value = "15">
+            <h2>3 PM</h2>
+            <div class="activity-block" id = "15" value = "15">
+            </div>
+            <!-- <div class="span-tip"> <h1>X</h1>
+                <div class="tip"> Clear all activities in this hour</div>
+            </div> -->
+        </section>
+        <section class = 'section' id="4-pm" value = "16">
+            <h2>4 PM</h2>
+            <div class="activity-block" id = "16" value = "16">
+            </div>
+            <!-- <div class="span-tip"> <h1>X</h1>
+                <div class="tip"> Clear all activities in this hour</div>
+            </div> -->
+        </section>
+        <section class = 'section' id="5-pm" value = "17">
+            <h2>5 PM</h2>
+            <div class="activity-block" id = "17" value = "17">
+            </div>
+            <!-- <div class="span-tip"> <h1>X</h1>
+                <div class="tip"> Clear all activities in this hour</div>
+            </div> -->
+        </section>
+    </div>
 <br>
 <br>
 <br>
@@ -126,6 +131,7 @@
 <footer><a href="#jumbotron">Back to Top ⬆</a>
 </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
+    <script src="./index.js"></script>
   </body>
 </html>

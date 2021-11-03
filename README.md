@@ -9,11 +9,10 @@ The problem that this application is trying to solve is the the user's time mana
 
 ## Usage
 
-To use this application, simply load the page, and click the add activities button at the top, fill out the form and click the button at the bottom. Oncce you do that you will see your information pop up on your calendar. 
- the following syntax:
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+To use this application, simply load the page, and click any of the time slots to add an activity, then click the save activity button to save it to your local storage. if you wish to clear all your activities (because it's a new day or something) then just hit the page at the top to clear all of your locally stored activities and auto-refresh the page. 
+
+``
+    ![Shows a moving image of a working webpage with different time slots](02-Homework/Assets/05-third-party-apis-homework-demo.gif)
 ## Credits
 
 ## License

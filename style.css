@@ -184,6 +184,43 @@ footer a{
   position:absolute;
 transform: translate(650px, -30px)
 }
+section{
+  background-color: rgb(219, 219, 219);
+  padding: 2%;
+  margin-left: 5%;
+  margin-right: 5%; 
+  border-color:grey;
+  border-width: 1px;
+  border-style:solid;
+  display: grid;
+  grid-template-columns: .5fr 3fr .5fr;
+}
+
+h2{
+  color:white;
+  /* margin-right:72%; */
+  padding:2%;
+}
+/* Tooltip container */
+.span-tip {
+  text-align:right;
+}
+.tip {
+  visibility: hidden;
+  position: relative;
+  background-color: var(--main-color);
+  border-radius: 10px;
+  color:white;
+  padding:2%;
+  text-align: center;
+  transform: translate(50px, 0px);
+}
+.span-tip:hover .tip{
+  visibility: visible;
+}
+
+
+/*  */
 .hide{
   display: none;
 }
